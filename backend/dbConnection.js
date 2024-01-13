@@ -13,7 +13,7 @@ const TodoSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     username: String,
     hashPassword: String,
-    todoList: [TodoSchema]
+    todoList: [String]
 })
 
 const User = mongoose.model('User', UserSchema);
