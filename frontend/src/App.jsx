@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import CreateTodo from './components/TodoComponents/CreateTodo';
+import Todo from './components/TodoComponents/Todo';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [todos, setTodos] = useState([]);
+    useEffect(()=>{
+        getTodos(setTodos);
+    }
+        ,[]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <CreateTodo todos={todos} setTodos={setTodos} getTodos={getTodos}/>
+            <Todo todos={todos}></Todo>
+        </>
+    );
+}
+
+async function getTodos(setTodos){
+    return await fetch('http://localhost:3451',{
+        method: "GET",
+        headers:{
+            "Authorization": "authorize eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hbmlrYW50YU1hbmRhbGEiLCJpZCI6IjY1YTJkMWQxM2E2MDM0NjM1ODM4NzVkMyIsImlhdCI6MTcwNTE2OTM3M30.gVhoSm21dBfGC9BDMZoj3PAoIg1SbpKsKNayy--NPWI"
+        }
+    }).then(async function(res){
+        const json = await res.json();
+        console.log(json.todos);
+        setTodos(json.todos);
+        return json.todos;
+    });
 }
 
 export default App
