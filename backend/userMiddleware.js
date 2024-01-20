@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 //jwtToken is password in headers of the request
 function userMiddleware(req, res, next){
     const token = req.headers['authorization'];
-    console.log(token);
     if(!token){
         return res.status(500).json({
             message: 'No authorization token'

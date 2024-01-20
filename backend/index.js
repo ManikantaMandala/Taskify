@@ -90,7 +90,6 @@ app.post('/todo', userMiddleware, async (req, res)=>{
     const title = req.body['title'];
     const description = req.body['description'];
     const decodedToken = req.decodedToken;
-    console.log(decodedToken);
     try{
         createTodo.parse({
             title:title,
@@ -111,7 +110,7 @@ app.post('/todo', userMiddleware, async (req, res)=>{
         });
     }
     catch(error){
-        console.log(error['message']);
+        console.log(error.message);
         res.status(400).json({
             message: 'Internal server error',
         });
@@ -123,7 +122,6 @@ app.post('/todo', userMiddleware, async (req, res)=>{
 //route: /
 app.get('/', userMiddleware, async (req,res)=>{
     const decodedToken = req.decodedToken;
-    console.log(decodedToken);
     try{
         const user = await User.findById(decodedToken['id']);
         const userTodoListIds = user['todoList'];
@@ -153,18 +151,15 @@ app.put('/change', userMiddleware, async (req, res)=>{
         const todoList = await User.findById(userId);
         const todoListIds = todoList['todoList'];
         for(let id of todoListIds){
-            console.log(id, todoId);
             if(id == todoId){
                 const document = await Todo.findById(
                     todoId,
                 );
                 const isCompleted = document['isCompleted'];
-                const updatedDocument = await Todo.findByIdAndUpdate(
+                await Todo.findByIdAndUpdate(
                     todoId,
                     {$set: { isCompleted: !isCompleted } }
                 )
-                console.log(updatedDocument['isCompleted']);
-                console.log(updatedDocument);
                 return res.status(200).json({
                     message: "changed the todo",
                 });
@@ -175,6 +170,7 @@ app.put('/change', userMiddleware, async (req, res)=>{
         });
     }
     catch(error){
+        console.log(error.message)
         return res.status(400).json({
             message: 'Internal server error',
             error: error.message

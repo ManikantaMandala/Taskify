@@ -6,7 +6,10 @@ import Todo from './components/TodoComponents/Todo';
 function App() {
     const [todos, setTodos] = useState([]);
     useEffect(()=>{
-        getTodos(setTodos);
+        const result = getTodos();
+        result.then((x) => {
+            setTodos(x)
+        });
     }
         ,[]);
 
@@ -18,7 +21,7 @@ function App() {
     );
 }
 
-async function getTodos(setTodos){
+async function getTodos(){
     return await fetch('http://localhost:3451',{
         method: "GET",
         headers:{
@@ -26,8 +29,6 @@ async function getTodos(setTodos){
         }
     }).then(async function(res){
         const json = await res.json();
-        console.log(json.todos);
-        setTodos(json.todos);
         return json.todos;
     });
 }
