@@ -1,6 +1,7 @@
 import {useState} from 'react';
+import {getTodos} from '../../scripts/GetTodo';
 
-export default function CreateTodo({setTodos, getTodos}){
+export default function CreateTodo({setTodos}){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     return (
@@ -29,11 +30,11 @@ async function createTodo(title, description, setTodos, getTodos){
         }),
         headers: {
             "Content-type": "application/json",
-            "Authorization": "authorize eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hbmlrYW50YU1hbmRhbGEiLCJpZCI6IjY1YTJkMWQxM2E2MDM0NjM1ODM4NzVkMyIsImlhdCI6MTcwNTE2OTM3M30.gVhoSm21dBfGC9BDMZoj3PAoIg1SbpKsKNayy--NPWI"
+            "Authorization": `authorize ${localStorage.getItem('authorization')}`
         }
     })
         .then(async function() {
             const jsonq = await getTodos()
             setTodos(jsonq);
-        })
+        });
 }

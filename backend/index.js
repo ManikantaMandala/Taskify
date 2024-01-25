@@ -58,7 +58,7 @@ app.post('/signin', async (req, res)=>{
         );
         if(!user){
             return res.status(400).json({
-                message: 'No user'
+                message: 'incorrect credentials'
             });
         }
         const userId = user._id.toString();
