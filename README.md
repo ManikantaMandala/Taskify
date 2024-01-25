@@ -19,6 +19,7 @@
 Prerequisite:
 - mongodb url link (you can get it from [mongodb-atlas](https://www.mongodb.com/cloud/atlas/register)):<your_mongodb_link>
 - jwt password (Any phrase that you like):<your_jwt_password_phrase>
+- Install [tmux](https://github.com/tmux/tmux/wiki/Installing))
 
 Step 1: navigate to backend folder in your terminal and install all the dependencies:
 
@@ -35,8 +36,7 @@ Step 3: navigate to frontend folder and install all the dependencies:
 
     cd ../frontend && npm install
 
-Step 4: run the servers:(recommanding to install [tmux](https://github.com/tmux/tmux/wiki/Installing))
-    
+Step 4: run the servers:
     cd ../
     tmux new-session -d -s myServers
     tmux send -t myServers:0 'cd ./backend/ && npm run dev' Enter
