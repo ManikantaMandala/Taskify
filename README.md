@@ -37,6 +37,7 @@ Step 3: navigate to frontend folder and install all the dependencies:
     cd ../frontend && npm install
 
 Step 4: run the servers:
+
     cd ../
     tmux new-session -d -s myServers
     tmux send -t myServers:0 'cd ./backend/ && npm run dev' Enter
