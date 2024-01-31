@@ -19,33 +19,20 @@
 Prerequisite:
 - mongodb url link (you can get it from [mongodb-atlas](https://www.mongodb.com/cloud/atlas/register)):<your_mongodb_link>
 - jwt password (Any phrase that you like):<your_jwt_password_phrase>
-- Install [tmux](https://github.com/tmux/tmux/wiki/Installing))
 
-Step 1: navigate to backend folder in your terminal and install all the dependencies:
+Step 1: create .env file and echo below properties into it
 
-    cd backend && npm install
-
-Step 2: create .env file and add the following text:
-
-    touch .env
+    touch ./backend/.env
     echo 'mongodb_link_url=<your_mongodb_link>
     port=3451
     jwtPassword=<your_jwt_password_phrase>' > .env
+    
+Step 2: install all the dependencies with yarn
 
-Step 3: navigate to frontend folder and install all the dependencies:
+    yarn
+    
+Step 3: run the frontend and backend services
 
-    cd ../frontend && npm install
+    yarn dev
 
-Step 4: run the servers:
-
-    cd ../
-    tmux new-session -d -s myServers
-    tmux send -t myServers:0 'cd ./backend/ && npm run dev' Enter
-    tmux neww -t myServer
-    tmux send -t myServers:1 './frontend/ && npm run dev' Enter
-
-Step 5: navigate to a browser and open [localhost:5173](http://localhost:5173)
-
-Step 6: terminate the servers:
-
-    tmux kill-session -t myServers
+Step 4: stop the services by pressing ctrl+c

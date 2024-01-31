@@ -1,0 +1,22 @@
+{
+    "name": "TodoApplication",
+    "version": "1.0.0",
+    "description": "minimalist TODO application",
+    "main": "index.js",
+    "repository": "git@github.com:ManikantaMandala/TodoApplication.git",
+    "author": "ManikantaMandala <mandala.manikanta.20cse@bmu.edu.in>",
+    "private": true,
+    "workspaces": [
+        "backend/*",
+        "frontend/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "start": "yarn --cwd frontend dev",
+        "next": "yarn --cwd backend dev",
+        "dev": "npm-run-all --parallel start next"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5"
+    }
+}
