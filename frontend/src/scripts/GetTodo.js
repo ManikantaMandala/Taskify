@@ -6,7 +6,6 @@ export async function getTodos(){
         }
     }).then(async function(res){
         const json = await res.json();
-        console.log(json);
         return json.todos;
     });
 }

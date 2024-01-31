@@ -9,7 +9,6 @@ export default function Dashboard(){
     const [todos, setTodos] = useState([]);
     const navigate = useNavigate();
     useEffect(()=>{
-        console.log(localStorage.getItem('authorization'));
         const result = getTodos();
         result.then((x) => {
             setTodos(x)

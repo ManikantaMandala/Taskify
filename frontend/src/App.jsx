@@ -2,8 +2,9 @@ import './App.css'
 import Dashboard from './components/TodoComponents/Dashboard';
 import LogIn from './components/AuthComponents/LogIn';
 import SignUp from './components/AuthComponents/SignUp';
-import RouteButton from './components/RouteButton';
+import PageNotFound from './components/PageNotFound';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Error from './components/Error';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
                     <Route path='/signup' element={<SignUp/>}/>
                     <Route path='/dashboard' element={<Dashboard/>}/>
                     <Route path='/error' element={<Error/>}/>
+                    <Route path='/*' element={<PageNotFound/>}/>
                 </Routes>
             </BrowserRouter>
         </>
