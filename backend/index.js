@@ -13,7 +13,10 @@ const port = process.env.port || 3451;
 const jwtPassword = process.env.jwtPassword;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: 'https://todo-application-mu-six.vercel.app/',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+}));
 
 //signup of user
 app.post('/signup', async (req, res)=>{
