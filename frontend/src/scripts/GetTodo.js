@@ -1,5 +1,6 @@
+import dotenvVar from './envVariable';
 export async function getTodos(){
-    return await fetch('http://localhost:3451',{
+    return await fetch(dotenvVar.backendLink,{
         method: "GET",
         headers:{
             "Authorization": `authorize ${localStorage.getItem('authorization')}`

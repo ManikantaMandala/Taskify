@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RouteButton from "../RouteButton";
+import dotenvVar from '../../scripts/envVariable';
 
 export default function SignUp(){
     const [username, setUsername] = useState('');
@@ -15,7 +16,7 @@ export default function SignUp(){
             console.log('Enter same passwords');
             setError('Different passwords');
         }
-        await fetch('http://localhost:3451/signup',{
+        await fetch(`${dotenvVar.backendLink}/signup`,{
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json'

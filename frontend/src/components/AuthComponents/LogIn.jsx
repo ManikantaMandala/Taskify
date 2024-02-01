@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import RouteButton from "../RouteButton";
+import dotenvVar from '../../scripts/envVariable';
 
 export default function LogIn(){
     const [username, setUsername] = useState('');
@@ -10,7 +11,8 @@ export default function LogIn(){
 
     async function logIn(e){
         e.preventDefault();
-        await fetch('http://localhost:3451/signin',
+        // await fetch('http://localhost:3451/signin',
+        await fetch(`${dotenvVar.backendLink}/signin`,
             {
                 method: "POST",
                 headers: {
