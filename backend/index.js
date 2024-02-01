@@ -14,7 +14,7 @@ const jwtPassword = process.env.jwtPassword;
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'https://todo-application-mu-six.vercel.app/',
+    origin: 'https://todo-application-mu-six.vercel.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }));
 
