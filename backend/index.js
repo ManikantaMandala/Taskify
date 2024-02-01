@@ -14,7 +14,7 @@ const jwtPassword = process.env.jwtPassword;
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: [ 'https://todo-application-sooty-omega.vercel.app/','https://todo-application-git-master-manikantamandalas-projects.vercel.app/','https://todo-application-manikantamandalas-projects.vercel.app/'
+    origin: [ 'https://todo-application-sooty-omega.vercel.app','https://todo-application-git-master-manikantamandalas-projects.vercel.app','https://todo-application-manikantamandalas-projects.vercel.app'
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }));
