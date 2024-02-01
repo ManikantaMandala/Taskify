@@ -1,3 +1,3 @@
 export default {
-    backendLink: 'http://localhost:3451'
+    backendLink: 'https://todo-application-backend.vercel.app'
 }
