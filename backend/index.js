@@ -5,6 +5,7 @@ const { createTodo, updateTodo } = require('./types');
 const crypto = require('crypto');
 const userMiddleware = require('./userMiddleware');
 const cors = require('cors');
+const url = require('./frontendUrl');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
@@ -13,11 +14,13 @@ const port = process.env.port || 3451;
 const jwtPassword = process.env.jwtPassword;
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: [ 'https://todo-application-sooty-omega.vercel.app','https://todo-application-git-master-manikantamandalas-projects.vercel.app','https://todo-application-manikantamandalas-projects.vercel.app'
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-}));
+// production
+// app.use(cors({
+//     origin: url,
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+// }));
+// dev
+app.use(cors());
 
 //signup of user
 app.post('/signup', async (req, res)=>{

@@ -10,12 +10,12 @@ export default function CreateTodo({setTodos}){
     return (
         <div>
             <div id='title'>
-                <input onChange={(e)=>{
+                <textarea onChange={(e)=>{
                     setTitle(e.target.value);
                 }} placeholder="title" type="text"/>
             </div>
             <div id='description'>
-                <input onChange={ (e)=>{
+                <textarea onChange={ (e)=>{
                         setDescription(e.target.value);
                 }}placeholder="description" type="text"/>
             </div>

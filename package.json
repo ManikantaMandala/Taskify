@@ -12,6 +12,9 @@
         "packages/*"
     ],
     "scripts": {
+        "installFront": "cd frontend && yarn",
+        "installBack": "cd backend && yarn",
+        "install": "npm-run-all --parallel installFront installBack",
         "frontend": "yarn --cwd frontend dev",
         "backend": "yarn --cwd backend dev",
         "dev": "npm-run-all --parallel frontend backend"

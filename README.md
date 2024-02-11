@@ -30,8 +30,7 @@ Step 1: create .env file and echo below properties into it
 Step 2: install all the dependencies with yarn
 
     yarn
-    cd frontend && npm install
-    cd ../backend && npm install
+    yarn install
     
 Step 3: run the frontend and backend services
 
