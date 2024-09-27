@@ -10,7 +10,7 @@ function App() {
 
     return (
         <>
-            <h1> Todo Application </h1>
+            <h1> Taskify </h1>
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<LogIn/>}/>
