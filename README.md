@@ -1,4 +1,4 @@
-## Todo Application
+## Taskify
 ### This project contains a simple TODO Application
 ##### It has the following features/TODOs:
 - [x] User can sign up
